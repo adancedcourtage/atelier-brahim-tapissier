@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Atelier Brahim — Tapissier d'Art & Décoration sur Mesure",
+    "description": "Artisan tapissier haut de gamme. Literie, canapés, fauteuils et décoration complète de salons sur mesure. Devis gratuit."
+  },
+  "nav": {
+    "home": "Accueil",
+    "products": "Créations",
+    "services": "Prestations",
+    "atelier": "L'Atelier",
+    "instagram": "Instagram",
+    "contact": "Devis",
+    "cta": "Demander un devis"
+  },
+  "hero": {
+    "eyebrow": "Tapissier d'art · Fait main au Maroc",
+    "title": "L'art de sublimer<br>vos intérieurs",
+    "subtitle": "Literie, canapés, fauteuils et décoration complète de salons. Chaque pièce est façonnée à la main, pensée pour durer et taillée pour vous.",
+    "cta_primary": "Demander un devis",
+    "cta_secondary": "Découvrir l'atelier",
+    "scroll": "Défiler"
+  },
+  "intro": {
+    "eyebrow": "Savoir-faire",
+    "title": "Un savoir-faire d'exception, une signature unique",
+    "text": "Depuis notre atelier, nous transformons matières nobles et gestes précis en pièces d'exception. Nous ne vendons pas des produits en série : nous créons des prestations sur mesure, pensées avec vous, pour votre espace et votre style de vie.",
+    "stat1_num": "100%",
+    "stat1_label": "Fait main",
+    "stat2_num": "Sur mesure",
+    "stat2_label": "Chaque projet unique",
+    "stat3_num": "Matières",
+    "stat3_label": "Nobles & durables"
+  },
+  "products": {
+    "eyebrow": "Nos créations",
+    "title": "Des pièces façonnées par type",
+    "subtitle": "Explorez nos univers. Chaque catégorie est réalisée sur mesure — dimensions, tissus, finitions et confort selon vos envies.",
+    "literie": {
+      "title": "Literie",
+      "text": "Têtes de lit capitonnées, sommiers habillés et ensembles sur mesure pour des nuits d'exception."
+    },
+    "canapes": {
+      "title": "Canapés",
+      "text": "Canapés d'angle, modulables ou classiques — structure robuste, assise confortable, tissus au choix."
+    },
+    "fauteuils": {
+      "title": "Fauteuils",
+      "text": "Réfection de fauteuils anciens ou créations contemporaines, pour un caractère affirmé."
+    },
+    "cta": "Discuter de mon projet"
+  },
+  "services": {
+    "eyebrow": "Prestations & Services",
+    "title": "Décoration complète de vos espaces",
+    "subtitle": "Au-delà de l'ameublement, nous concevons des ambiances entières. Nous orchestrons chaque détail pour créer un lieu qui vous ressemble.",
+    "led": {
+      "title": "Intégration LED & Lumière",
+      "text": "Éclairages d'ambiance, rétroéclairages et jeux de lumière intégrés pour magnifier vos espaces."
+    },
+    "agencement": {
+      "title": "Agencement de meubles",
+      "text": "Optimisation et disposition de vos meubles pour un espace harmonieux, fluide et fonctionnel."
+    },
+    "ambiance": {
+      "title": "Création d'ambiances",
+      "text": "Palette de matières, couleurs et textures : nous composons une atmosphère complète et cohérente."
+    }
+  },
+  "atelier": {
+    "eyebrow": "L'Atelier",
+    "title": "Là où naissent nos créations",
+    "subtitle": "Poussez la porte de notre atelier. Découvrez les gestes, les matières et la passion derrière chaque réalisation.",
+    "cta": "Visiter l'atelier"
+  },
+  "instagram": {
+    "eyebrow": "Nous suivre",
+    "title": "L'atelier en images",
+    "subtitle": "Suivez nos dernières réalisations au quotidien sur Instagram.",
+    "cta": "Suivre @Brahim_ait_soussi"
+  },
+  "contact": {
+    "eyebrow": "Contact & Devis",
+    "title": "Parlons de votre projet",
+    "subtitle": "Décrivez-nous votre besoin. Nous vous répondons rapidement avec une proposition sur mesure — sans engagement.",
+    "form": {
+      "name": "Nom complet",
+      "name_ph": "Votre nom",
+      "phone": "Téléphone",
+      "phone_ph": "Votre numéro",
+      "type": "Type de prestation",
+      "type_options": ["Literie", "Canapé", "Fauteuil", "Décoration de salon", "Autre"],
+      "message": "Votre projet",
+      "message_ph": "Décrivez votre projet, vos dimensions, vos envies...",
+      "submit": "Envoyer via WhatsApp",
+      "or": "ou"
+    },
+    "whatsapp": "Discuter sur WhatsApp",
+    "call": "Appeler maintenant",
+    "info_title": "Coordonnées",
+    "hours_title": "Horaires",
+    "hours": "Lun – Sam : 9h00 – 19h00",
+    "maps": "Ouvrir dans Google Maps"
+  },
+  "footer": {
+    "tagline": "Tapissier d'art & décoration sur mesure.",
+    "rights": "Tous droits réservés.",
+    "made": "Fait main, avec passion."
+  },
+  "gallery": {
+    "literie_1": "Tête de lit capitonnée",
+    "literie_2": "Ensemble literie sur mesure",
+    "literie_3": "Finitions & détails",
+    "canape_1": "Canapé d'angle contemporain",
+    "canape_2": "Canapé classique revisité",
+    "canape_3": "Assise sur mesure",
+    "fauteuil_1": "Fauteuil réfection d'art",
+    "fauteuil_2": "Fauteuil contemporain",
+    "fauteuil_3": "Détail de tapisserie",
+    "presta_led": "Salon avec intégration LED",
+    "presta_agencement": "Agencement complet",
+    "presta_ambiance": "Ambiance sur mesure",
+    "atelier_video": "Dans l'atelier",
+    "atelier_1": "Le savoir-faire",
+    "atelier_2": "Matières nobles"
+  }
+}

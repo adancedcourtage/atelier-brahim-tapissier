@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier Brahim — Tapissier d'Art</title>
+  <meta name="description" content="Artisan tapissier haut de gamme." />
+
+  <!-- Polices : Playfair (serif luxe) + Inter (sans) + Cairo (arabe) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&family=Cairo:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) : pratique, zéro build. Pour la prod tu peux passer au CLI. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        colors: { ink: "#1a1714", cream: "#f4efe7", brass: "#c9a35b", muted: "#a99f92" },
+        fontFamily: { serif: ["Playfair Display","serif"], sans: ["Inter","sans-serif"] }
+      } }
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="bg-ink text-cream">
+
+  <!-- ======================= NAVBAR ======================= -->
+  <header class="fixed top-0 inset-x-0 z-50 nav-blur">
+    <div class="max-shell flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2">
+        <span class="font-serif text-xl tracking-wide">Atelier <span class="text-brass">Brahim</span></span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="hidden lg:flex items-center gap-8 text-sm">
+        <a href="#products"  class="nav-link" data-i18n="nav.products">Créations</a>
+        <a href="#services"  class="nav-link" data-i18n="nav.services">Prestations</a>
+        <a href="#atelier"   class="nav-link" data-i18n="nav.atelier">L'Atelier</a>
+        <a href="#instagram" class="nav-link" data-i18n="nav.instagram">Instagram</a>
+        <a href="#contact"   class="nav-link" data-i18n="nav.contact">Devis</a>
+      </nav>
+
+      <div class="flex items-center gap-4">
+        <!-- Sélecteur de langue -->
+        <div class="flex items-center gap-1 border border-brass/20 rounded p-0.5">
+          <button class="lang-btn" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="ar">ع</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="#contact" class="btn btn-primary hidden sm:inline-flex text-xs" data-i18n="nav.cta">Demander un devis</a>
+        <!-- Burger mobile -->
+        <button id="menu-toggle" class="lg:hidden p-2" aria-label="Menu">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu mobile -->
+    <nav id="mobile-menu" class="mobile-menu hidden-menu lg:hidden nav-blur border-t border-brass/10">
+      <div class="max-shell flex flex-col py-4 gap-4 text-sm">
+        <a href="#products"  data-i18n="nav.products">Créations</a>
+        <a href="#services"  data-i18n="nav.services">Prestations</a>
+        <a href="#atelier"   data-i18n="nav.atelier">L'Atelier</a>
+        <a href="#instagram" data-i18n="nav.instagram">Instagram</a>
+        <a href="#contact"   data-i18n="nav.contact">Devis</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ======================= HERO ======================= -->
+    <section id="home" class="hero">
+      <div class="hero-fallback"></div>
+      <div id="hero-media" class="hero-media"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content max-shell w-full">
+        <div class="max-w-2xl">
+          <p class="eyebrow mb-5 reveal" data-i18n="hero.eyebrow">Tapissier d'art</p>
+          <h1 class="section-title text-4xl sm:text-6xl md:text-7xl mb-6 reveal reveal-delay-1" data-i18n="hero.title">L'art de sublimer vos intérieurs</h1>
+          <p class="text-muted text-lg leading-relaxed mb-8 max-w-xl reveal reveal-delay-2" data-i18n="hero.subtitle">Literie, canapés, fauteuils et décoration complète.</p>
+          <div class="flex flex-wrap gap-4 reveal reveal-delay-3">
+            <a href="#contact" class="btn btn-primary" data-i18n="hero.cta_primary">Demander un devis</a>
+            <a href="#atelier" class="btn btn-ghost" data-i18n="hero.cta_secondary">Découvrir l'atelier</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-2 flex flex-col items-center gap-2 text-muted">
+        <span class="text-xs tracking-widest uppercase" data-i18n="hero.scroll">Défiler</span>
+        <svg class="scroll-cue" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v10M4 9l4 4 4-4"/></svg>
+      </div>
+    </section>
+
+    <!-- ======================= INTRO / SAVOIR-FAIRE ======================= -->
+    <section class="section-pad">
+      <div class="max-shell grid md:grid-cols-2 gap-12 items-center">
+        <div class="reveal">
+          <p class="eyebrow mb-4" data-i18n="intro.eyebrow">Savoir-faire</p>
+          <h2 class="section-title text-3xl sm:text-4xl mb-6" data-i18n="intro.title">Un savoir-faire d'exception</h2>
+          <div class="rule mb-6"></div>
+          <p class="text-muted leading-relaxed text-lg" data-i18n="intro.text">Depuis notre atelier...</p>
+        </div>
+        <div class="grid grid-cols-3 gap-4 reveal reveal-delay-1">
+          <div class="text-center p-5 border border-brass/15 rounded">
+            <div class="font-serif text-2xl text-brass" data-i18n="intro.stat1_num">100%</div>
+            <div class="text-xs text-muted mt-2" data-i18n="intro.stat1_label">Fait main</div>
+          </div>
+          <div class="text-center p-5 border border-brass/15 rounded">
+            <div class="font-serif text-2xl text-brass" data-i18n="intro.stat2_num">Sur mesure</div>
+            <div class="text-xs text-muted mt-2" data-i18n="intro.stat2_label">Unique</div>
+          </div>
+          <div class="text-center p-5 border border-brass/15 rounded">
+            <div class="font-serif text-2xl text-brass" data-i18n="intro.stat3_num">Matières</div>
+            <div class="text-xs text-muted mt-2" data-i18n="intro.stat3_label">Nobles</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PRODUITS (par type) ======================= -->
+    <section id="products" class="section-pad bg-[#16130f]">
+      <div class="max-shell">
+        <div class="max-w-2xl mb-14 reveal">
+          <p class="eyebrow mb-4" data-i18n="products.eyebrow">Nos créations</p>
+          <h2 class="section-title text-3xl sm:text-5xl mb-5" data-i18n="products.title">Des pièces façonnées par type</h2>
+          <div class="rule mb-6"></div>
+          <p class="text-muted text-lg" data-i18n="products.subtitle">Explorez nos univers.</p>
+        </div>
+
+        <!-- LITERIE -->
+        <div class="mb-16">
+          <h3 class="font-serif text-2xl mb-2 text-brass" data-i18n="products.literie.title">Literie</h3>
+          <p class="text-muted mb-6 max-w-xl" data-i18n="products.literie.text"></p>
+          <div id="grid-literie" class="grid grid-cols-2 md:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- CANAPÉS -->
+        <div class="mb-16">
+          <h3 class="font-serif text-2xl mb-2 text-brass" data-i18n="products.canapes.title">Canapés</h3>
+          <p class="text-muted mb-6 max-w-xl" data-i18n="products.canapes.text"></p>
+          <div id="grid-canapes" class="grid grid-cols-2 md:grid-cols-3 gap-5"></div>
+        </div>
+
+        <!-- FAUTEUILS -->
+        <div>
+          <h3 class="font-serif text-2xl mb-2 text-brass" data-i18n="products.fauteuils.title">Fauteuils</h3>
+          <p class="text-muted mb-6 max-w-xl" data-i18n="products.fauteuils.text"></p>
+          <div id="grid-fauteuils" class="grid grid-cols-2 md:grid-cols-3 gap-5"></div>
+        </div>
+
+        <div class="text-center mt-14 reveal">
+          <a href="#contact" class="btn btn-primary" data-i18n="products.cta">Discuter de mon projet</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= PRESTATIONS / SERVICES ======================= -->
+    <section id="services" class="section-pad">
+      <div class="max-shell">
+        <div class="max-w-2xl mb-14 reveal">
+          <p class="eyebrow mb-4" data-i18n="services.eyebrow">Prestations</p>
+          <h2 class="section-title text-3xl sm:text-5xl mb-5" data-i18n="services.title">Décoration complète</h2>
+          <div class="rule mb-6"></div>
+          <p class="text-muted text-lg" data-i18n="services.subtitle">Au-delà de l'ameublement...</p>
+        </div>
+
+        <div id="grid-prestations" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10"></div>
+
+        <!-- Détail des 3 services -->
+        <div class="grid sm:grid-cols-3 gap-8">
+          <div class="reveal">
+            <div class="text-brass mb-3"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1h6c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2z"/></svg></div>
+            <h3 class="font-serif text-xl mb-2" data-i18n="services.led.title">Intégration LED</h3>
+            <p class="text-muted text-sm leading-relaxed" data-i18n="services.led.text"></p>
+          </div>
+          <div class="reveal reveal-delay-1">
+            <div class="text-brass mb-3"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4M8 20v2M16 20v2"/></svg></div>
+            <h3 class="font-serif text-xl mb-2" data-i18n="services.agencement.title">Agencement</h3>
+            <p class="text-muted text-sm leading-relaxed" data-i18n="services.agencement.text"></p>
+          </div>
+          <div class="reveal reveal-delay-2">
+            <div class="text-brass mb-3"><svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.5 7.1 18.1l.9-5.5-4-3.9L9.5 8 12 3z"/></svg></div>
+            <h3 class="font-serif text-xl mb-2" data-i18n="services.ambiance.title">Création d'ambiances</h3>
+            <p class="text-muted text-sm leading-relaxed" data-i18n="services.ambiance.text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= ATELIER ======================= -->
+    <section id="atelier" class="section-pad bg-[#16130f]">
+      <div class="max-shell">
+        <div class="max-w-2xl mb-12 reveal">
+          <p class="eyebrow mb-4" data-i18n="atelier.eyebrow">L'Atelier</p>
+          <h2 class="section-title text-3xl sm:text-5xl mb-5" data-i18n="atelier.title">Là où naissent nos créations</h2>
+          <div class="rule mb-6"></div>
+          <p class="text-muted text-lg" data-i18n="atelier.subtitle">Poussez la porte...</p>
+        </div>
+        <div id="grid-atelier" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+      </div>
+    </section>
+
+    <!-- ======================= INSTAGRAM ======================= -->
+    <section id="instagram" class="section-pad">
+      <div class="max-shell">
+        <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+          <p class="eyebrow mb-4" data-i18n="instagram.eyebrow">Nous suivre</p>
+          <h2 class="section-title text-3xl sm:text-5xl mb-5" data-i18n="instagram.title">L'atelier en images</h2>
+          <div class="rule mb-6 mx-auto"></div>
+          <p class="text-muted text-lg mb-6" data-i18n="instagram.subtitle">Suivez nos réalisations.</p>
+          <a href="#" data-link="instagram" target="_blank" rel="noopener" class="btn btn-ghost" data-i18n="instagram.cta">Suivre @Brahim_ait_soussi</a>
+        </div>
+        <div id="grid-instagram" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3"></div>
+      </div>
+    </section>
+
+    <!-- ======================= CONTACT & DEVIS ======================= -->
+    <section id="contact" class="section-pad bg-[#16130f]">
+      <div class="max-shell grid lg:grid-cols-2 gap-14">
+        <!-- Colonne texte + infos -->
+        <div class="reveal">
+          <p class="eyebrow mb-4" data-i18n="contact.eyebrow">Contact & Devis</p>
+          <h2 class="section-title text-3xl sm:text-5xl mb-5" data-i18n="contact.title">Parlons de votre projet</h2>
+          <div class="rule mb-6"></div>
+          <p class="text-muted text-lg mb-8" data-i18n="contact.subtitle">Décrivez-nous votre besoin.</p>
+
+          <!-- Boutons d'action directe -->
+          <div class="flex flex-wrap gap-4 mb-10">
+            <a href="#" data-link="whatsapp" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+              <span data-i18n="contact.whatsapp">WhatsApp</span>
+            </a>
+            <a href="#" data-link="tel" class="btn btn-ghost">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 10.5a5 5 0 0 1-4.5-4.5L11 4.5 9 2 4 2c0 7 5 12 12 12v-5l-2.5-2-1.5 1.5z"/></svg>
+              <span data-fill="phone">0661975574</span>
+            </a>
+          </div>
+
+          <!-- Coordonnées -->
+          <div class="space-y-4 text-sm">
+            <div>
+              <div class="eyebrow mb-1" data-i18n="contact.info_title">Coordonnées</div>
+              <p class="font-serif text-lg text-cream mb-1"><span data-fill="shop">ريحانة</span></p>
+              <p class="text-muted" data-fill="address">Boulevard Mohamed VI, Mohammédia, Maroc</p>
+            </div>
+            <div class="flex flex-col gap-1">
+              <a class="text-brass hover:underline" data-fill="email" href="#">contact@...</a>
+              <a class="text-brass hover:underline" data-link="instagram" target="_blank" rel="noopener"><span data-fill="instagram">@Brahim_ait_soussi</span></a>
+            </div>
+            <div>
+              <div class="eyebrow mb-1" data-i18n="contact.hours_title">Horaires</div>
+              <p class="text-muted" data-i18n="contact.hours">Lun – Sam : 9h – 19h</p>
+            </div>
+          </div>
+
+          <!-- Carte -->
+          <div class="mt-8 rounded overflow-hidden border border-brass/15">
+            <iframe id="map-frame" width="100%" height="200" style="border:0;filter:grayscale(.3) invert(.9) hue-rotate(180deg)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <a href="#" data-link="maps" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-3 text-sm text-brass hover:underline">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.5a5 5 0 0 0-5 5c0 3.5 5 8 5 8s5-4.5 5-8a5 5 0 0 0-5-5z"/><circle cx="8" cy="6.5" r="1.8"/></svg>
+            <span data-i18n="contact.maps">Ouvrir dans Google Maps</span>
+          </a>
+        </div>
+
+        <!-- Colonne formulaire -->
+        <div class="reveal reveal-delay-1">
+          <form id="quote-form" class="space-y-5 p-6 sm:p-8 border border-brass/15 rounded bg-ink">
+            <div>
+              <label class="field-label" data-i18n="contact.form.name">Nom complet</label>
+              <input name="name" class="field" required data-i18n-attr="placeholder:contact.form.name_ph" />
+            </div>
+            <div>
+              <label class="field-label" data-i18n="contact.form.phone">Téléphone</label>
+              <input name="phone" type="tel" class="field" required data-i18n-attr="placeholder:contact.form.phone_ph" />
+            </div>
+            <div>
+              <label class="field-label" data-i18n="contact.form.type">Type de prestation</label>
+              <select name="type" id="type-select" class="field"></select>
+            </div>
+            <div>
+              <label class="field-label" data-i18n="contact.form.message">Votre projet</label>
+              <textarea name="message" rows="4" class="field" data-i18n-attr="placeholder:contact.form.message_ph"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-full justify-center">
+              <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+              <span data-i18n="contact.form.submit">Envoyer via WhatsApp</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================= FOOTER ======================= -->
+  <footer class="border-t border-brass/10 py-10">
+    <div class="max-shell flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+      <div>
+        <span class="font-serif text-lg text-cream">Atelier <span class="text-brass">Brahim</span></span>
+        <p data-i18n="footer.tagline" class="mt-1">Tapissier d'art & décoration sur mesure.</p>
+      </div>
+      <div class="text-center sm:text-right">
+        <p>© <span id="year"></span> Atelier Brahim. <span data-i18n="footer.rights">Tous droits réservés.</span></p>
+        <p class="text-xs mt-1 text-brass/70" data-i18n="footer.made">Fait main, avec passion.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bouton WhatsApp flottant -->
+  <a href="#" data-link="whatsapp" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+    <svg width="30" height="30" fill="#fff" viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.6-.8-2.6-1.4-3.7-3.2-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.3A10 10 0 1 0 12 2z"/></svg>
+  </a>
+
+  <!-- Scripts (ordre important : data → i18n → main) -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Année courante + remplissage des options du <select> selon la langue
+    document.getElementById("year").textContent = new Date().getFullYear();
+    function fillSelect() {
+      const sel = document.getElementById("type-select");
+      const opts = I18N.t("contact.form.type_options");
+      if (sel && Array.isArray(opts)) sel.innerHTML = opts.map(o => `<option>${o}</option>`).join("");
+    }
+    document.addEventListener("langchange", fillSelect);
+    window.addEventListener("load", () => setTimeout(fillSelect, 100));
+  </script>
+</body>
+</html>

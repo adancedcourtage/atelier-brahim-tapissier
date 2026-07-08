@@ -1,0 +1,126 @@
+{
+  "meta": {
+    "title": "Atelier Brahim — Master Upholsterer & Bespoke Décor",
+    "description": "High-end upholstery craftsman. Bedding, sofas, armchairs and complete bespoke living-room décor. Free quote."
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Creations",
+    "services": "Services",
+    "atelier": "The Workshop",
+    "instagram": "Instagram",
+    "contact": "Quote",
+    "cta": "Request a quote"
+  },
+  "hero": {
+    "eyebrow": "Master upholsterer · Handmade in Morocco",
+    "title": "The art of elevating<br>your interiors",
+    "subtitle": "Bedding, sofas, armchairs and complete living-room décor. Every piece is handcrafted, built to last and tailored to you.",
+    "cta_primary": "Request a quote",
+    "cta_secondary": "Discover the workshop",
+    "scroll": "Scroll"
+  },
+  "intro": {
+    "eyebrow": "Craftsmanship",
+    "title": "Exceptional craft, a signature of your own",
+    "text": "From our workshop, we turn noble materials and precise gestures into exceptional pieces. We don't sell mass-produced goods: we create bespoke work, designed with you, for your space and your lifestyle.",
+    "stat1_num": "100%",
+    "stat1_label": "Handmade",
+    "stat2_num": "Bespoke",
+    "stat2_label": "Every project unique",
+    "stat3_num": "Materials",
+    "stat3_label": "Noble & durable"
+  },
+  "products": {
+    "eyebrow": "Our creations",
+    "title": "Pieces crafted by type",
+    "subtitle": "Explore our worlds. Each category is made to measure — dimensions, fabrics, finishes and comfort to your taste.",
+    "literie": {
+      "title": "Bedding",
+      "text": "Upholstered headboards, dressed bases and bespoke sets for exceptional nights."
+    },
+    "canapes": {
+      "title": "Sofas",
+      "text": "Corner, modular or classic sofas — sturdy frame, comfortable seating, fabrics of your choice."
+    },
+    "fauteuils": {
+      "title": "Armchairs",
+      "text": "Restoration of antique armchairs or contemporary creations, for a bold character."
+    },
+    "cta": "Discuss my project"
+  },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Complete décor for your spaces",
+    "subtitle": "Beyond furniture, we design entire atmospheres. We orchestrate every detail to create a place that is truly yours.",
+    "led": {
+      "title": "LED & Lighting integration",
+      "text": "Ambient lighting, backlighting and integrated light effects to enhance your spaces."
+    },
+    "agencement": {
+      "title": "Furniture arrangement",
+      "text": "Optimising and arranging your furniture for a harmonious, fluid and functional space."
+    },
+    "ambiance": {
+      "title": "Atmosphere design",
+      "text": "A palette of materials, colours and textures: we compose a complete and coherent mood."
+    }
+  },
+  "atelier": {
+    "eyebrow": "The Workshop",
+    "title": "Where our creations come to life",
+    "subtitle": "Step into our workshop. Discover the gestures, the materials and the passion behind every piece.",
+    "cta": "Visit the workshop"
+  },
+  "instagram": {
+    "eyebrow": "Follow us",
+    "title": "The workshop in pictures",
+    "subtitle": "Follow our latest creations every day on Instagram.",
+    "cta": "Follow @Brahim_ait_soussi"
+  },
+  "contact": {
+    "eyebrow": "Contact & Quote",
+    "title": "Let's talk about your project",
+    "subtitle": "Tell us what you need. We'll reply quickly with a bespoke proposal — no commitment.",
+    "form": {
+      "name": "Full name",
+      "name_ph": "Your name",
+      "phone": "Phone",
+      "phone_ph": "Your number",
+      "type": "Type of service",
+      "type_options": ["Bedding", "Sofa", "Armchair", "Living-room décor", "Other"],
+      "message": "Your project",
+      "message_ph": "Describe your project, dimensions, wishes...",
+      "submit": "Send via WhatsApp",
+      "or": "or"
+    },
+    "whatsapp": "Chat on WhatsApp",
+    "call": "Call now",
+    "info_title": "Contact details",
+    "hours_title": "Opening hours",
+    "hours": "Mon – Sat: 9:00 AM – 7:00 PM",
+    "maps": "Open in Google Maps"
+  },
+  "footer": {
+    "tagline": "Master upholstery & bespoke décor.",
+    "rights": "All rights reserved.",
+    "made": "Handmade, with passion."
+  },
+  "gallery": {
+    "literie_1": "Upholstered headboard",
+    "literie_2": "Bespoke bedding set",
+    "literie_3": "Finishes & details",
+    "canape_1": "Contemporary corner sofa",
+    "canape_2": "Reimagined classic sofa",
+    "canape_3": "Bespoke seating",
+    "fauteuil_1": "Fine armchair restoration",
+    "fauteuil_2": "Contemporary armchair",
+    "fauteuil_3": "Upholstery detail",
+    "presta_led": "Living room with LED integration",
+    "presta_agencement": "Full arrangement",
+    "presta_ambiance": "Bespoke atmosphere",
+    "atelier_video": "Inside the workshop",
+    "atelier_1": "The craft",
+    "atelier_2": "Noble materials"
+  }
+}

@@ -1,0 +1,238 @@
+/* =============================================================================
+   style.css — Styles custom (au-delà de Tailwind)
+   Palette « artisanat d'art & luxe » : charbon profond, laiton/or, crème.
+   Gère : variables, typographies, animations au scroll, RTL, galeries.
+   ============================================================================= */
+
+:root {
+  --c-ink:      #1a1714;   /* charbon profond (fond) */
+  --c-ink-soft: #211d19;
+  --c-cream:    #f4efe7;   /* crème (texte clair) */
+  --c-brass:    #c9a35b;   /* laiton / or (accent) */
+  --c-brass-lo: #a8823f;
+  --c-muted:    #a99f92;   /* texte secondaire */
+  --c-line:     rgba(201,163,91,.18);
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans:  "Inter", system-ui, sans-serif;
+  --font-ar:    "Cairo", "Tajawal", system-ui, sans-serif;
+}
+
+/* ---------- Base ---------- */
+html { scroll-behavior: smooth; }
+body {
+  background: var(--c-ink);
+  color: var(--c-cream);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+.font-serif { font-family: var(--font-serif); }
+
+/* Bascule automatique de la police en arabe */
+html[lang="ar"] body,
+html[lang="ar"] .font-serif {
+  font-family: var(--font-ar);
+}
+html[lang="ar"] { letter-spacing: 0; }
+
+/* Fondu doux lors du changement de langue */
+body.lang-switching #main-content { opacity: .35; transition: opacity .2s ease; }
+#main-content { transition: opacity .3s ease; }
+
+/* ---------- RTL : miroir des éléments directionnels ---------- */
+html[dir="rtl"] .rtl-flip { transform: scaleX(-1); }
+html[dir="rtl"] .hero-eyebrow-line { margin-left: 0; margin-right: 0; }
+
+/* ---------- Accent & titres ---------- */
+.text-brass { color: var(--c-brass); }
+.eyebrow {
+  color: var(--c-brass);
+  text-transform: uppercase;
+  letter-spacing: .28em;
+  font-size: .72rem;
+  font-weight: 600;
+}
+html[lang="ar"] .eyebrow { letter-spacing: .1em; }
+
+.section-title {
+  font-family: var(--font-serif);
+  line-height: 1.1;
+  font-weight: 600;
+}
+
+/* Filet décoratif sous les titres */
+.rule {
+  width: 56px; height: 2px;
+  background: linear-gradient(90deg, var(--c-brass), transparent);
+}
+html[dir="rtl"] .rule { background: linear-gradient(270deg, var(--c-brass), transparent); }
+
+/* ---------- Navbar ---------- */
+.nav-blur {
+  background: rgba(20,17,14,.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--c-line);
+}
+.nav-link { position: relative; transition: color .25s ease; }
+.nav-link::after {
+  content: ""; position: absolute; left: 0; bottom: -4px;
+  width: 0; height: 1px; background: var(--c-brass); transition: width .3s ease;
+}
+.nav-link:hover { color: var(--c-brass); }
+.nav-link:hover::after { width: 100%; }
+
+/* Sélecteur de langue */
+.lang-btn {
+  font-size: .72rem; font-weight: 600; letter-spacing: .05em;
+  padding: .2rem .5rem; border-radius: 4px; color: var(--c-muted);
+  transition: all .2s ease;
+}
+.lang-btn:hover { color: var(--c-cream); }
+.lang-btn.active { color: var(--c-ink); background: var(--c-brass); }
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .85rem 1.6rem; border-radius: 2px;
+  font-weight: 600; font-size: .9rem; letter-spacing: .02em;
+  transition: all .3s cubic-bezier(.2,.7,.3,1); cursor: pointer;
+}
+.btn-primary {
+  background: var(--c-brass); color: var(--c-ink);
+  box-shadow: 0 8px 30px -8px rgba(201,163,91,.5);
+}
+.btn-primary:hover { background: var(--c-cream); transform: translateY(-2px); }
+.btn-ghost {
+  border: 1px solid var(--c-line); color: var(--c-cream);
+}
+.btn-ghost:hover { border-color: var(--c-brass); color: var(--c-brass); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; min-height: 100svh;
+  display: flex; align-items: center;
+  overflow: hidden;
+}
+.hero-media { position: absolute; inset: 0; z-index: 0; }
+.hero-media img, .hero-media video {
+  width: 100%; height: 100%; object-fit: cover;
+}
+/* Placeholder élégant si aucune image n'est déposée */
+.hero-fallback {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 90% at 70% 20%, rgba(201,163,91,.20), transparent 55%),
+    radial-gradient(100% 100% at 20% 90%, rgba(120,80,40,.30), transparent 50%),
+    linear-gradient(160deg, #211d19, #12100d);
+}
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(90deg, rgba(15,13,11,.88) 0%, rgba(15,13,11,.55) 45%, rgba(15,13,11,.25) 100%);
+}
+html[dir="rtl"] .hero-overlay {
+  background: linear-gradient(270deg, rgba(15,13,11,.88) 0%, rgba(15,13,11,.55) 45%, rgba(15,13,11,.25) 100%);
+}
+.hero-content { position: relative; z-index: 2; }
+
+/* Indicateur de défilement */
+.scroll-cue { animation: bob 2.2s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); opacity:.6 } 50% { transform: translateY(8px); opacity:1 } }
+
+/* ---------- Cartes produits / prestations ---------- */
+.card {
+  position: relative; overflow: hidden; border-radius: 4px;
+  border: 1px solid var(--c-line); background: var(--c-ink-soft);
+  transition: transform .4s ease, border-color .4s ease;
+}
+.card:hover { transform: translateY(-6px); border-color: var(--c-brass); }
+.card-media { position: relative; overflow: hidden; aspect-ratio: 4/5; }
+.card-media img, .card-media video {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s cubic-bezier(.2,.7,.3,1);
+}
+.card:hover .card-media img { transform: scale(1.06); }
+/* Le fallback est SOUS l'image (rendu avant dans le DOM) : visible uniquement
+   si l'image est absente/cassée. Opaque pour bien masquer le fond. */
+.card-media-fallback {
+  position: absolute; inset: 0; z-index: 0;
+  background: linear-gradient(150deg, #2a251f, #16130f);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--c-brass);
+}
+.card-media img, .card-media video { position: relative; z-index: 1; }
+
+/* ---------- Galerie / grille médias ---------- */
+.gallery-item {
+  position: relative; overflow: hidden; border-radius: 4px;
+  aspect-ratio: 1/1; cursor: pointer;
+  border: 1px solid var(--c-line);
+}
+.gallery-item img, .gallery-item video {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .6s ease;
+}
+.gallery-item:hover img { transform: scale(1.08); }
+.gallery-caption {
+  position: absolute; inset: auto 0 0 0; padding: .9rem 1rem;
+  background: linear-gradient(0deg, rgba(15,13,11,.9), transparent);
+  font-size: .82rem; opacity: 0; transform: translateY(8px);
+  transition: all .3s ease;
+}
+.gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+.gallery-fallback {
+  position:absolute; inset:0; z-index:0; display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(150deg, #2a251f, #16130f); color: var(--c-brass);
+  font-size: .8rem;
+}
+.gallery-item img, .gallery-item video { position: relative; z-index: 1; }
+.gallery-item .gallery-caption { z-index: 2; }
+
+/* Badge Instagram au survol */
+.insta-item::after {
+  content: ""; position: absolute; inset: 0;
+  background: rgba(201,163,91,0); transition: background .3s ease;
+}
+.insta-item:hover::after { background: rgba(201,163,91,.12); }
+
+/* ---------- Formulaire ---------- */
+.field {
+  width: 100%; padding: .85rem 1rem; background: var(--c-ink-soft);
+  border: 1px solid var(--c-line); border-radius: 3px; color: var(--c-cream);
+  font-size: .95rem; transition: border-color .25s ease;
+}
+.field:focus { outline: none; border-color: var(--c-brass); }
+.field::placeholder { color: var(--c-muted); }
+.field-label { font-size: .78rem; color: var(--c-muted); margin-bottom: .4rem; display:block; letter-spacing:.04em; }
+
+/* ---------- Bouton WhatsApp flottant ---------- */
+.wa-float {
+  position: fixed; bottom: 22px; z-index: 60;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #25D366; display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 30px -6px rgba(37,211,102,.55);
+  transition: transform .25s ease;
+}
+.wa-float:hover { transform: scale(1.08); }
+html[dir="ltr"] .wa-float { right: 22px; }
+html[dir="rtl"] .wa-float { left: 22px; }
+
+/* ---------- Animations au scroll (révélation) ---------- */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.3,1); }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Divers ---------- */
+.section-pad { padding: clamp(4.5rem, 10vw, 8rem) 0; }
+.max-shell { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.text-muted { color: var(--c-muted); }
+.divider { height:1px; background: var(--c-line); }
+
+/* Menu mobile */
+.mobile-menu { transition: transform .35s cubic-bezier(.2,.7,.3,1), opacity .3s ease; }
+.mobile-menu.hidden-menu { transform: translateY(-12px); opacity: 0; pointer-events: none; }
