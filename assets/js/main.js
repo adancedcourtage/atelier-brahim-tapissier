@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   bindContactLinks();
   renderHero();
   renderAllGalleries();
+  renderStories();
+  initStoryViewer();
   bindContactForm();
   initMobileMenu();
   initScrollReveal();
@@ -20,6 +22,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Re-render des galeries à chaque changement de langue (légendes traduites)
   document.addEventListener("langchange", () => {
     renderAllGalleries();
+    renderStories();
     bindContactLinks(); // met à jour le message WhatsApp dans la bonne langue
   });
 });
@@ -210,4 +213,169 @@ function initScrollReveal() {
 function observeReveals(scope) {
   if (!_observer) return;
   scope.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => _observer.observe(el));
+}
+
+/* =========================================================================
+   STORIES — bulles + visionneuse plein écran (style Instagram)
+   -------------------------------------------------------------------------
+   PERFORMANCE : les bulles n'affichent qu'une IMAGE de couverture (poster).
+   Aucune vidéo n'est chargée tant que l'utilisateur n'a pas cliqué.
+   La vidéo HD n'est injectée dans le DOM (preload="auto") qu'à l'ouverture.
+   ========================================================================= */
+
+const STORY = { list: [], index: 0, video: null, raf: 0, seen: new Set() };
+
+/* Rendu de la rangée de bulles */
+function renderStories() {
+  const row = document.getElementById("stories-row");
+  if (!row) return;
+  STORY.list = SITE_CONFIG.stories || [];
+  const p = MEDIA_PATHS.stories;
+  row.innerHTML = STORY.list.map((s, i) => {
+    const label = s.i18n ? I18N.t("gallery." + s.i18n) : (s.label || "");
+    const seen = STORY.seen.has(i) ? " seen" : "";
+    return `
+      <button class="story-bubble${seen}" role="listitem" data-idx="${i}"
+              aria-label="${label || ("Story " + (i + 1))}">
+        <span class="story-ring">
+          <img class="story-thumb" src="${p}${s.poster}" alt="" loading="lazy"
+               onerror="this.style.visibility='hidden'">
+          ${i === 0 ? `<span class="story-live" data-i18n="stories.badge">Live</span>` : ""}
+        </span>
+        ${label ? `<span class="story-label">${label}</span>` : ""}
+      </button>`;
+  }).join("");
+  row.querySelectorAll(".story-bubble").forEach((b) =>
+    b.addEventListener("click", () => openStory(parseInt(b.dataset.idx, 10)))
+  );
+  // Re-traduit le badge "Live"
+  I18N.translate();
+  observeReveals(row);
+}
+
+/* Initialise les contrôles de la visionneuse (une seule fois) */
+function initStoryViewer() {
+  const v = document.getElementById("story-viewer");
+  if (!v) return;
+  const isRTL = () => document.documentElement.getAttribute("dir") === "rtl";
+
+  document.getElementById("sv-close").addEventListener("click", closeStory);
+  document.getElementById("sv-arrow-prev").addEventListener("click", (e) => { e.stopPropagation(); prevStory(); });
+  document.getElementById("sv-arrow-next").addEventListener("click", (e) => { e.stopPropagation(); nextStory(); });
+
+  // Zones de tap : en RTL, on inverse (droite = précédent)
+  document.getElementById("sv-tap-left").addEventListener("click", () => (isRTL() ? nextStory() : prevStory()));
+  document.getElementById("sv-tap-right").addEventListener("click", () => (isRTL() ? prevStory() : nextStory()));
+
+  // Fond cliqué (hors cadre) = fermer
+  v.addEventListener("click", (e) => { if (e.target === v) closeStory(); });
+
+  // Clavier
+  document.addEventListener("keydown", (e) => {
+    if (!v.classList.contains("open")) return;
+    if (e.key === "Escape") closeStory();
+    else if (e.key === "ArrowLeft") isRTL() ? nextStory() : prevStory();
+    else if (e.key === "ArrowRight") isRTL() ? prevStory() : nextStory();
+    else if (e.key === " ") { e.preventDefault(); toggleStoryPause(); }
+  });
+}
+
+/* Ouvre la visionneuse sur la story i */
+function openStory(i) {
+  const v = document.getElementById("story-viewer");
+  buildProgress();
+  v.classList.add("open");
+  v.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  loadStory(i);
+}
+
+/* Construit les segments de progression (1 par story) */
+function buildProgress() {
+  const prog = document.getElementById("sv-progress");
+  prog.innerHTML = STORY.list.map(() => `<span class="sv-seg"><i></i></span>`).join("");
+}
+
+/* Charge et lit la story i (injecte la vidéo HD ici seulement) */
+function loadStory(i) {
+  if (i < 0) i = 0;
+  if (i >= STORY.list.length) { closeStory(); return; }
+  STORY.index = i;
+  STORY.seen.add(i);
+  const s = STORY.list[i];
+  const stage = document.getElementById("sv-stage");
+  const p = MEDIA_PATHS.stories;
+
+  // Segments : avant = pleins, après = vides
+  const segs = document.querySelectorAll("#sv-progress .sv-seg");
+  segs.forEach((seg, k) => {
+    seg.classList.toggle("done", k < i);
+    seg.querySelector("i").style.width = k < i ? "100%" : "0%";
+  });
+
+  // Légende
+  const cap = s.i18n ? I18N.t("gallery." + s.i18n) : (s.label || "");
+  document.getElementById("sv-cap").textContent = cap;
+  // Avatar = poster de la 1re story
+  const av = document.getElementById("sv-avatar");
+  if (STORY.list[0]) av.src = p + STORY.list[0].poster;
+
+  // (Re)crée la vidéo HD — chargée dynamiquement uniquement maintenant
+  cancelAnimationFrame(STORY.raf);
+  stage.innerHTML =
+    `<img class="sv-poster" src="${p}${s.poster}" alt="">` +
+    `<video playsinline autoplay preload="auto"></video>`;
+  const video = stage.querySelector("video");
+  STORY.video = video;
+  const source = document.createElement("source");
+  source.src = p + s.video; source.type = "video/mp4";
+  video.appendChild(source);
+  video.muted = false; video.volume = 1;
+
+  video.addEventListener("ended", nextStory);
+  video.addEventListener("timeupdate", () => tickProgress(i));
+  // Lecture (fallback muet si l'autoplay avec son est bloqué par le navigateur)
+  video.play().catch(() => { video.muted = true; video.play().catch(() => {}); });
+  // Barre de progression fluide
+  const loop = () => {
+    if (STORY.video === video && video.duration) tickProgress(i);
+    STORY.raf = requestAnimationFrame(loop);
+  };
+  STORY.raf = requestAnimationFrame(loop);
+
+  updateStoryBubbleSeen();
+}
+
+function tickProgress(i) {
+  const video = STORY.video;
+  const seg = document.querySelectorAll("#sv-progress .sv-seg")[i];
+  if (!video || !seg || !video.duration) return;
+  const pct = Math.min(100, (video.currentTime / video.duration) * 100);
+  seg.querySelector("i").style.width = pct + "%";
+}
+
+function nextStory() { loadStory(STORY.index + 1); }
+function prevStory() { loadStory(STORY.index - 1); }
+
+function toggleStoryPause() {
+  const v = STORY.video; if (!v) return;
+  v.paused ? v.play().catch(() => {}) : v.pause();
+}
+
+function closeStory() {
+  const v = document.getElementById("story-viewer");
+  cancelAnimationFrame(STORY.raf);
+  if (STORY.video) { STORY.video.pause(); STORY.video.removeAttribute("src"); STORY.video.load(); STORY.video = null; }
+  document.getElementById("sv-stage").innerHTML = "";
+  v.classList.remove("open");
+  v.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  updateStoryBubbleSeen();
+}
+
+/* Marque visuellement les bulles déjà vues */
+function updateStoryBubbleSeen() {
+  document.querySelectorAll(".story-bubble").forEach((b) => {
+    b.classList.toggle("seen", STORY.seen.has(parseInt(b.dataset.idx, 10)));
+  });
 }

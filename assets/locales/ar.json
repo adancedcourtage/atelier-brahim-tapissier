@@ -20,6 +20,12 @@
     "cta_secondary": "اكتشف الورشة",
     "scroll": "مرّر للأسفل"
   },
+  "stories": {
+    "eyebrow": "الورشة مباشرة",
+    "title": "أعمالنا بالفيديو",
+    "hint": "انقر على دائرة للتشغيل",
+    "badge": "مباشر"
+  },
   "intro": {
     "eyebrow": "الخبرة الحرفية",
     "title": "حرفية استثنائية، وبصمة فريدة",
@@ -121,6 +127,11 @@
     "presta_ambiance": "أجواء حسب الطلب",
     "atelier_video": "داخل الورشة",
     "atelier_1": "الحرفية",
-    "atelier_2": "مواد نبيلة"
+    "atelier_2": "مواد نبيلة",
+    "story_salon": "صالون",
+    "story_ambiance": "أجواء",
+    "story_mesure": "حسب الطلب",
+    "story_atelier": "الورشة",
+    "story_finitions": "لمسات"
   }
 }

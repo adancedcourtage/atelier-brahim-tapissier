@@ -236,3 +236,127 @@ html[dir="rtl"] .wa-float { left: 22px; }
 /* Menu mobile */
 .mobile-menu { transition: transform .35s cubic-bezier(.2,.7,.3,1), opacity .3s ease; }
 .mobile-menu.hidden-menu { transform: translateY(-12px); opacity: 0; pointer-events: none; }
+
+/* =============================================================================
+   STORIES — bulles circulaires (style Instagram) + visionneuse plein écran
+   ============================================================================= */
+
+/* ---- Rangée de bulles ---- */
+.stories-row {
+  display: flex; gap: 1.15rem; overflow-x: auto; padding: .5rem .25rem 1rem;
+  scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.stories-row::-webkit-scrollbar { display: none; }
+/* En RTL, le défilement démarre à droite */
+html[dir="rtl"] .stories-row { direction: rtl; }
+
+.story-bubble {
+  flex: 0 0 auto; scroll-snap-align: start; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  width: 88px; background: none; border: 0; padding: 0;
+}
+.story-ring {
+  position: relative; width: 84px; height: 84px; border-radius: 50%;
+  padding: 3px; /* épaisseur de la bordure gradient */
+  background: conic-gradient(from var(--a,0deg), #c9a35b, #f4e0b0, #a8823f, #e9c877, #c9a35b);
+  transition: transform .3s cubic-bezier(.2,.7,.3,1);
+}
+/* Bordure gradient animée (rotation) */
+@property --a { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+.story-ring { animation: ring-rotate 6s linear infinite; }
+@keyframes ring-rotate { to { --a: 360deg; } }
+/* Fallback navigateurs sans @property : dégradé statique doré (déjà lisible) */
+
+.story-bubble:hover .story-ring,
+.story-bubble:focus-visible .story-ring { transform: scale(1.06); }
+.story-bubble:focus-visible { outline: none; }
+.story-bubble:focus-visible .story-ring { box-shadow: 0 0 0 3px rgba(201,163,91,.35); }
+
+.story-ring::after { /* anneau intérieur sombre (séparation) */
+  content: ""; position: absolute; inset: 3px; border-radius: 50%;
+  border: 2px solid var(--c-ink); z-index: 1;
+}
+.story-thumb {
+  position: relative; z-index: 0; width: 100%; height: 100%;
+  border-radius: 50%; object-fit: cover; display: block;
+}
+/* Bulle « déjà vue » : bordure grisée */
+.story-bubble.seen .story-ring {
+  background: #4a453d; animation: none;
+}
+.story-label {
+  font-size: .72rem; color: var(--c-muted); text-align: center;
+  max-width: 88px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.story-live {
+  position: absolute; bottom: -2px; left: 50%; transform: translateX(-50%); z-index: 2;
+  background: var(--c-brass); color: var(--c-ink); font-size: .58rem; font-weight: 700;
+  letter-spacing: .06em; padding: 1px 7px; border-radius: 20px; text-transform: uppercase;
+}
+
+/* ---- Visionneuse plein écran ---- */
+.story-viewer {
+  position: fixed; inset: 0; z-index: 200; display: none;
+  background: rgba(8,7,6,.94); backdrop-filter: blur(6px);
+  align-items: center; justify-content: center;
+}
+.story-viewer.open { display: flex; }
+.sv-frame {
+  position: relative; width: min(440px, 100vw); height: min(92vh, 860px);
+  background: #000; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 30px 80px -20px rgba(0,0,0,.8);
+}
+@media (max-width: 500px){ .sv-frame { width: 100vw; height: 100dvh; border-radius: 0; } }
+
+.sv-stage { position: absolute; inset: 0; background: #0b0a09; }
+.sv-stage video { width: 100%; height: 100%; object-fit: contain; background:#000; }
+.sv-poster { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:blur(8px) brightness(.6); }
+
+/* Barres de progression (segments) */
+.sv-progress {
+  position: absolute; top: 10px; left: 10px; right: 10px; z-index: 6;
+  display: flex; gap: 4px;
+}
+.sv-seg { flex: 1; height: 3px; border-radius: 3px; background: rgba(255,255,255,.28); overflow: hidden; }
+.sv-seg > i { display: block; height: 100%; width: 0%; background: #fff; border-radius: 3px; }
+.sv-seg.done > i { width: 100%; }
+
+/* En-tête (avatar + nom + fermer) */
+.sv-head {
+  position: absolute; top: 24px; left: 12px; right: 12px; z-index: 6;
+  display: flex; align-items: center; gap: 10px; color: #fff;
+}
+.sv-head img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border:1.5px solid var(--c-brass); }
+.sv-head .sv-name { font-size: .85rem; font-weight: 600; }
+.sv-head .sv-cap { font-size: .72rem; opacity: .7; }
+.sv-close {
+  margin-inline-start: auto; width: 40px; height: 40px; display:flex; align-items:center; justify-content:center;
+  background: rgba(0,0,0,.35); border-radius: 50%; color:#fff; border:0; cursor:pointer;
+}
+.sv-close:hover { background: rgba(0,0,0,.6); }
+
+/* Zones de tap gauche/droite (navigation) */
+.sv-tap { position: absolute; top: 0; bottom: 0; width: 35%; z-index: 4; cursor: pointer; }
+.sv-tap-left { left: 0; }
+.sv-tap-right { right: 0; }
+
+/* Flèches (desktop) */
+.sv-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5;
+  width: 40px; height: 40px; border-radius: 50%; border:0; cursor:pointer;
+  background: rgba(0,0,0,.4); color:#fff; display:none; align-items:center; justify-content:center;
+}
+@media (min-width: 640px){ .story-viewer.open .sv-arrow { display:flex; } }
+.sv-arrow:hover { background: rgba(0,0,0,.65); }
+.sv-arrow-prev { left: -54px; }
+.sv-arrow-next { right: -54px; }
+@media (max-width: 760px){ .sv-arrow-prev{left:6px;} .sv-arrow-next{right:6px;} }
+
+.sv-frame { animation: sv-in .28s cubic-bezier(.2,.7,.3,1); }
+@keyframes sv-in { from { transform: scale(.92); opacity:0 } to { transform: scale(1); opacity:1 } }
+
+@media (prefers-reduced-motion: reduce) {
+  .story-ring { animation: none; }
+  .sv-frame { animation: none; }
+}

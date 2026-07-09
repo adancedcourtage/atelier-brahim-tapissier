@@ -97,6 +97,48 @@
       </div>
     </section>
 
+    <!-- ======================= STORIES · L'ATELIER EN DIRECT ======================= -->
+    <section id="stories" class="pt-10 pb-2">
+      <div class="max-shell">
+        <div class="flex items-end justify-between mb-4 reveal">
+          <div>
+            <p class="eyebrow mb-2" data-i18n="stories.eyebrow">L'atelier en direct</p>
+            <h2 class="section-title text-2xl sm:text-3xl" data-i18n="stories.title">Nos réalisations en vidéo</h2>
+          </div>
+          <span class="text-xs text-muted hidden sm:block" data-i18n="stories.hint">Touchez une bulle pour lire</span>
+        </div>
+        <!-- Rangée de bulles (générée par main.js) -->
+        <div id="stories-row" class="stories-row" role="list" aria-label="Stories"></div>
+      </div>
+    </section>
+
+    <!-- Visionneuse plein écran (cachée par défaut) -->
+    <div id="story-viewer" class="story-viewer" role="dialog" aria-modal="true" aria-label="Visionneuse de stories" aria-hidden="true">
+      <button class="sv-arrow sv-arrow-prev" id="sv-arrow-prev" aria-label="Précédent">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 4l-6 6 6 6"/></svg>
+      </button>
+      <div class="sv-frame">
+        <div class="sv-progress" id="sv-progress"></div>
+        <div class="sv-head">
+          <img id="sv-avatar" src="" alt="" />
+          <div>
+            <div class="sv-name" data-fill="shop">ريحانة</div>
+            <div class="sv-cap" id="sv-cap"></div>
+          </div>
+          <button class="sv-close" id="sv-close" aria-label="Fermer">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 5l10 10M15 5L5 15"/></svg>
+          </button>
+        </div>
+        <div class="sv-stage" id="sv-stage"></div>
+        <!-- Zones de navigation tactile -->
+        <div class="sv-tap sv-tap-left"  id="sv-tap-left"></div>
+        <div class="sv-tap sv-tap-right" id="sv-tap-right"></div>
+      </div>
+      <button class="sv-arrow sv-arrow-next" id="sv-arrow-next" aria-label="Suivant">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4l6 6-6 6"/></svg>
+      </button>
+    </div>
+
     <!-- ======================= INTRO / SAVOIR-FAIRE ======================= -->
     <section class="section-pad">
       <div class="max-shell grid md:grid-cols-2 gap-12 items-center">

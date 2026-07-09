@@ -20,6 +20,12 @@
     "cta_secondary": "Découvrir l'atelier",
     "scroll": "Défiler"
   },
+  "stories": {
+    "eyebrow": "L'atelier en direct",
+    "title": "Nos réalisations en vidéo",
+    "hint": "Touchez une bulle pour lire",
+    "badge": "Live"
+  },
   "intro": {
     "eyebrow": "Savoir-faire",
     "title": "Un savoir-faire d'exception, une signature unique",
@@ -121,6 +127,11 @@
     "presta_ambiance": "Ambiance sur mesure",
     "atelier_video": "Dans l'atelier",
     "atelier_1": "Le savoir-faire",
-    "atelier_2": "Matières nobles"
+    "atelier_2": "Matières nobles",
+    "story_salon": "Salon",
+    "story_ambiance": "Ambiance",
+    "story_mesure": "Sur mesure",
+    "story_atelier": "Atelier",
+    "story_finitions": "Finitions"
   }
 }

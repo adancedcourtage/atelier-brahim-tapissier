@@ -20,6 +20,12 @@
     "cta_secondary": "Discover the workshop",
     "scroll": "Scroll"
   },
+  "stories": {
+    "eyebrow": "The workshop live",
+    "title": "Our work in video",
+    "hint": "Tap a bubble to play",
+    "badge": "Live"
+  },
   "intro": {
     "eyebrow": "Craftsmanship",
     "title": "Exceptional craft, a signature of your own",
@@ -121,6 +127,11 @@
     "presta_ambiance": "Bespoke atmosphere",
     "atelier_video": "Inside the workshop",
     "atelier_1": "The craft",
-    "atelier_2": "Noble materials"
+    "atelier_2": "Noble materials",
+    "story_salon": "Living room",
+    "story_ambiance": "Ambiance",
+    "story_mesure": "Bespoke",
+    "story_atelier": "Workshop",
+    "story_finitions": "Finishes"
   }
 }

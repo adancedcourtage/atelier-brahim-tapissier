@@ -120,6 +120,33 @@ const SITE_CONFIG = {
   ],
 
   /* ---------------------------------------------------------------------------
+     4b. STORIES — « L'atelier en direct » (style Instagram)
+     PERFORMANCE : la bulle n'affiche que le "poster" (image). La vidéo n'est
+     chargée qu'au clic. Dépose tes fichiers dans assets/media/stories/.
+       { video: "story-1.mp4", poster: "story-1.jpg", i18n: "story_salon" }
+     --------------------------------------------------------------------------- */
+  stories: [
+    { video: "story-1.mp4",  poster: "story-1.jpg",  i18n: "story_salon" },
+    { video: "story-2.mp4",  poster: "story-2.jpg",  i18n: "story_ambiance" },
+    { video: "story-3.mp4",  poster: "story-3.jpg",  i18n: "story_salon" },
+    { video: "story-4.mp4",  poster: "story-4.jpg",  i18n: "story_mesure" },
+    { video: "story-5.mp4",  poster: "story-5.jpg",  i18n: "story_ambiance" },
+    { video: "story-6.mp4",  poster: "story-6.jpg",  i18n: "story_atelier" },
+    { video: "story-7.mp4",  poster: "story-7.jpg",  i18n: "story_salon" },
+    { video: "story-8.mp4",  poster: "story-8.jpg",  i18n: "story_ambiance" },
+    { video: "story-9.mp4",  poster: "story-9.jpg",  i18n: "story_salon" },
+    { video: "story-10.mp4", poster: "story-10.jpg", i18n: "story_mesure" },
+    { video: "story-11.mp4", poster: "story-11.jpg", i18n: "story_atelier" },
+    { video: "story-12.mp4", poster: "story-12.jpg", i18n: "story_finitions" },
+    { video: "story-13.mp4", poster: "story-13.jpg", i18n: "story_salon" },
+    { video: "story-14.mp4", poster: "story-14.jpg", i18n: "story_ambiance" },
+    { video: "story-15.mp4", poster: "story-15.jpg", i18n: "story_atelier" },
+    { video: "story-16.mp4", poster: "story-16.jpg", i18n: "story_finitions" },
+    { video: "story-17.mp4", poster: "story-17.jpg", i18n: "story_salon" },
+    { video: "story-18.mp4", poster: "story-18.jpg", i18n: "story_mesure" }
+  ],
+
+  /* ---------------------------------------------------------------------------
      5. INSTAGRAM — visuels du feed (@Brahim_ait_soussi)
      Chaque vignette renvoie vers ton profil Instagram au clic.
      --------------------------------------------------------------------------- */
@@ -141,5 +168,6 @@ const MEDIA_PATHS = {
   fauteuils: "assets/media/fauteuils/",
   prestations: "assets/media/prestations/",
   atelier: "assets/media/atelier/",
+  stories: "assets/media/stories/",
   instagram: "assets/media/instagram/"
 };
