@@ -309,17 +309,12 @@ html[dir="rtl"] .stories-row { direction: rtl; }
 }
 @media (max-width: 500px){ .sv-frame { width: 100vw; height: 100dvh; border-radius: 0; } }
 
-.sv-stage { position: absolute; inset: 0; background: #0b0a09; }
-/* La vidéo doit être positionnée + z-index au-dessus du fond flouté,
-   sinon le poster (absolute) se peint PAR-DESSUS et rend tout flou. */
+.sv-stage { position: absolute; inset: 0; background: #000; }
+/* La vidéo remplit tout le cadre (style Instagram) — AUCUN fond flouté.
+   object-fit: cover = pas de bandes noires, image nette sur toute la surface. */
 .sv-stage video {
   position: absolute; inset: 0; z-index: 1;
-  width: 100%; height: 100%; object-fit: contain; background: transparent;
-}
-/* Fond flouté : seulement pour remplir les bandes noires des vidéos verticales */
-.sv-poster {
-  position: absolute; inset: 0; z-index: 0;
-  width: 100%; height: 100%; object-fit: cover; filter: blur(8px) brightness(.5);
+  width: 100%; height: 100%; object-fit: cover; background: #000;
 }
 
 /* Barres de progression (segments) */

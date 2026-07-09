@@ -320,11 +320,11 @@ function loadStory(i) {
   const av = document.getElementById("sv-avatar");
   if (STORY.list[0]) av.src = p + STORY.list[0].poster;
 
-  // (Re)crée la vidéo HD — chargée dynamiquement uniquement maintenant
+  // (Re)crée la vidéo HD — chargée dynamiquement uniquement maintenant.
+  // Poster NET affiché avant lecture (aucun fond flouté).
   cancelAnimationFrame(STORY.raf);
   stage.innerHTML =
-    `<img class="sv-poster" src="${p}${s.poster}" alt="">` +
-    `<video playsinline autoplay muted preload="auto"></video>`;
+    `<video playsinline autoplay muted preload="auto" poster="${p}${s.poster}"></video>`;
   const video = stage.querySelector("video");
   STORY.video = video;
   const source = document.createElement("source");
