@@ -22,7 +22,8 @@
     };
   </script>
 
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <!-- ?v=N : numéro de version pour forcer le rechargement (anti-cache). À incrémenter à chaque mise à jour. -->
+  <link rel="stylesheet" href="assets/css/style.css?v=7" />
 </head>
 
 <body class="bg-ink text-cream">
@@ -361,9 +362,9 @@
   </a>
 
   <!-- Scripts (ordre important : data → i18n → main) -->
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/i18n.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/data.js?v=7"></script>
+  <script src="assets/js/i18n.js?v=7"></script>
+  <script src="assets/js/main.js?v=7"></script>
   <script>
     // Année courante + remplissage des options du <select> selon la langue
     document.getElementById("year").textContent = new Date().getFullYear();

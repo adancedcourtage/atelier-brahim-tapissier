@@ -27,7 +27,7 @@ const I18N = {
     await Promise.all(
       this.supported.map(async (lang) => {
         try {
-          const res = await fetch(`assets/locales/${lang}.json`);
+          const res = await fetch(`assets/locales/${lang}.json?v=7`);
           this.translations[lang] = await res.json();
         } catch (e) {
           console.error(`[i18n] Impossible de charger ${lang}.json`, e);
