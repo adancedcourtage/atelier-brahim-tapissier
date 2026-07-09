@@ -324,18 +324,17 @@ function loadStory(i) {
   cancelAnimationFrame(STORY.raf);
   stage.innerHTML =
     `<img class="sv-poster" src="${p}${s.poster}" alt="">` +
-    `<video playsinline autoplay preload="auto"></video>`;
+    `<video playsinline autoplay muted preload="auto"></video>`;
   const video = stage.querySelector("video");
   STORY.video = video;
   const source = document.createElement("source");
   source.src = p + s.video; source.type = "video/mp4";
   video.appendChild(source);
-  video.muted = false; video.volume = 1;
+  video.muted = true; video.volume = 0;   // Vidéos sans son
 
   video.addEventListener("ended", nextStory);
   video.addEventListener("timeupdate", () => tickProgress(i));
-  // Lecture (fallback muet si l'autoplay avec son est bloqué par le navigateur)
-  video.play().catch(() => { video.muted = true; video.play().catch(() => {}); });
+  video.play().catch(() => {});
   // Barre de progression fluide
   const loop = () => {
     if (STORY.video === video && video.duration) tickProgress(i);
