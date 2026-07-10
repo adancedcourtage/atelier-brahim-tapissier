@@ -30,14 +30,18 @@ const SITE_CONFIG = {
       ar: "مرحبا، أرغب في الحصول على عرض سعر لخدمة التنجيد.",
       en: "Hello, I would like a quote for an upholstery service."
     },
-    instagram: "Brahim_ait_soussi",   // Sans le "@"
-    email: "contact@atelier-brahim.ma",
-    // Nom de la boutique (affiché dans la section contact et le pied de page)
-    shopName: "ريحانة",
+    // --- Réseaux sociaux ---
+    instagram: "Brahim_ait_soussi",       // pseudo Instagram (sans le "@")
+    tiktok: "ibrahim.dicour",             // pseudo TikTok (sans le "@")
+    // ⚠️ Facebook : remplace par l'URL EXACTE de ta page/profil (copie-la depuis Facebook)
+    facebookUrl: "https://www.facebook.com/people/%D8%A5%D8%A8%D8%B1%D8%A7%D9%87%D9%8A%D9%85-%D9%88%D9%84%D8%AF-%D8%A7%D9%84%D8%AF%D9%83%D8%A7%D9%84%D9%8A/",
+    email: "contact@salon-rayhane.ma",
+    // Nom officiel de la boutique (affiché dans la section contact, la visionneuse et le pied de page)
+    shopName: "صالون الريحان",
     address: {
-      fr: "Boutique ريحانة — Boulevard Mohamed VI, 28820 Mohammédia, Maroc",
-      ar: "متجر ريحانة — شارع محمد السادس، 28820 المحمدية، المغرب",
-      en: "Rihana Store — Boulevard Mohamed VI, 28820 Mohammedia, Morocco"
+      fr: "Salon Rayhane — Boulevard Mohamed VI, 28820 Mohammédia, Maroc",
+      ar: "صالون الريحان — شارع محمد السادس، 28820 المحمدية، المغرب",
+      en: "Salon Rayhane — Boulevard Mohamed VI, 28820 Mohammedia, Morocco"
     },
     // Carte Google Maps centrée sur les coordonnées exactes (33.69794, -7.36530)
     mapEmbed: "https://www.google.com/maps?q=33.69794,-7.36530&z=17&output=embed"

@@ -238,6 +238,34 @@ html[dir="rtl"] .wa-float { left: 22px; }
 .mobile-menu.hidden-menu { transform: translateY(-12px); opacity: 0; pointer-events: none; }
 
 /* =============================================================================
+   RÉSEAUX SOCIAUX — boutons (section) + icônes (footer)
+   ============================================================================= */
+.social-btn {
+  display: inline-flex; align-items: center; gap: .55rem;
+  padding: .7rem 1.3rem; border-radius: 40px;
+  border: 1px solid var(--c-line); color: var(--c-cream);
+  font-size: .9rem; font-weight: 600; letter-spacing: .01em;
+  transition: transform .3s cubic-bezier(.2,.7,.3,1), background .3s ease, border-color .3s ease, color .3s ease;
+}
+.social-btn svg { flex: 0 0 auto; transition: transform .3s ease; }
+.social-btn:hover { transform: translateY(-3px); color: #fff; border-color: transparent; }
+.social-btn:hover svg { transform: scale(1.1); }
+/* Couleurs officielles au survol */
+.social-instagram:hover { background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); }
+.social-tiktok:hover    { background: #000; box-shadow: 0 0 0 1px #25F4EE inset, 3px 3px 0 -1px #FE2C55; }
+.social-facebook:hover  { background: #1877F2; }
+.social-label { line-height: 1; }
+
+/* Icônes compactes du footer */
+.social-ico {
+  width: 38px; height: 38px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid var(--c-line); color: var(--c-muted);
+  transition: transform .25s ease, color .25s ease, border-color .25s ease, background .25s ease;
+}
+.social-ico:hover { transform: translateY(-2px); color: var(--c-brass); border-color: var(--c-brass); }
+
+/* =============================================================================
    STORIES — bulles circulaires (style Instagram) + visionneuse plein écran
    ============================================================================= */
 

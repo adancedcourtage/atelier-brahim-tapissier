@@ -144,6 +144,10 @@ function bindContactLinks() {
   document.querySelectorAll("[data-link='whatsapp']").forEach((a) => (a.href = waUrl));
   document.querySelectorAll("[data-link='tel']").forEach((a) => (a.href = telUrl));
   document.querySelectorAll("[data-link='instagram']").forEach((a) => (a.href = igUrl));
+  // TikTok & Facebook
+  const ttUrl = "https://www.tiktok.com/@" + cfg.tiktok;
+  document.querySelectorAll("[data-link='tiktok']").forEach((a) => (a.href = ttUrl));
+  document.querySelectorAll("[data-link='facebook']").forEach((a) => (a.href = cfg.facebookUrl || "#"));
   document.querySelectorAll("[data-fill='phone']").forEach((el) => (el.textContent = cfg.phone));
   document.querySelectorAll("[data-fill='email']").forEach((el) => {
     el.textContent = cfg.email; el.href = "mailto:" + cfg.email;

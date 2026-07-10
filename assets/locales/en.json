@@ -1,7 +1,14 @@
 {
   "meta": {
-    "title": "Atelier Brahim — Master Upholsterer & Bespoke Décor",
-    "description": "High-end upholstery craftsman. Bedding, sofas, armchairs and complete bespoke living-room décor. Free quote."
+    "title": "Salon Rayhane — Master Upholsterer & Bespoke Décor",
+    "description": "Salon Rayhane, high-end upholstery craftsman in Mohammedia. Bedding, sofas, armchairs and complete bespoke living-room décor. Free quote."
+  },
+  "brand": "Salon <span class=\"text-brass\">Rayhane</span>",
+  "social": {
+    "title": "Follow us",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "facebook": "Facebook"
   },
   "nav": {
     "home": "Home",

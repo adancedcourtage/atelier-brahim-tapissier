@@ -1,7 +1,14 @@
 {
   "meta": {
-    "title": "Atelier Brahim — Tapissier d'Art & Décoration sur Mesure",
-    "description": "Artisan tapissier haut de gamme. Literie, canapés, fauteuils et décoration complète de salons sur mesure. Devis gratuit."
+    "title": "Salon Rayhane — Tapissier d'Art & Décoration sur Mesure",
+    "description": "Salon Rayhane, artisan tapissier haut de gamme à Mohammédia. Literie, canapés, fauteuils et décoration complète de salons sur mesure. Devis gratuit."
+  },
+  "brand": "Salon <span class=\"text-brass\">Rayhane</span>",
+  "social": {
+    "title": "Suivez-nous",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "facebook": "Facebook"
   },
   "nav": {
     "home": "Accueil",
