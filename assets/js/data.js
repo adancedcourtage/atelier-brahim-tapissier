@@ -33,8 +33,7 @@ const SITE_CONFIG = {
     // --- Réseaux sociaux ---
     instagram: "Brahim_ait_soussi",       // pseudo Instagram (sans le "@")
     tiktok: "ibrahim.dicour",             // pseudo TikTok (sans le "@")
-    // ⚠️ Facebook : remplace par l'URL EXACTE de ta page/profil (copie-la depuis Facebook)
-    facebookUrl: "https://www.facebook.com/people/%D8%A5%D8%A8%D8%B1%D8%A7%D9%87%D9%8A%D9%85-%D9%88%D9%84%D8%AF-%D8%A7%D9%84%D8%AF%D9%83%D8%A7%D9%84%D9%8A/",
+    facebookUrl: "https://www.facebook.com/ibrahim.momo.501",
     email: "contact@salon-rayhane.ma",
     // Nom officiel de la boutique (affiché dans la section contact, la visionneuse et le pied de page)
     shopName: "صالون الريحان",
