@@ -34,13 +34,13 @@ const SITE_CONFIG = {
     instagram: "Brahim_ait_soussi",       // pseudo Instagram (sans le "@")
     tiktok: "ibrahim.dicour",             // pseudo TikTok (sans le "@")
     facebookUrl: "https://www.facebook.com/ibrahim.momo.501",
-    email: "contact@salon-rayhane.ma",
-    // Nom officiel de la boutique (affiché dans la section contact, la visionneuse et le pied de page)
-    shopName: "صالون الريحان",
+    email: "contact@rayhane-design.ma",
+    // Nom officiel de la marque (affiché dans la section contact, la visionneuse et le pied de page)
+    shopName: "الريحان ديزاين",
     address: {
-      fr: "Salon Rayhane — Boulevard Mohamed VI, 28820 Mohammédia, Maroc",
-      ar: "صالون الريحان — شارع محمد السادس، 28820 المحمدية، المغرب",
-      en: "Salon Rayhane — Boulevard Mohamed VI, 28820 Mohammedia, Morocco"
+      fr: "Rayhane Design — Boulevard Mohamed VI, 28820 Mohammédia, Maroc",
+      ar: "الريحان ديزاين — شارع محمد السادس، 28820 المحمدية، المغرب",
+      en: "Rayhane Design — Boulevard Mohamed VI, 28820 Mohammedia, Morocco"
     },
     // Carte Google Maps centrée sur les coordonnées exactes (33.69794, -7.36530)
     mapEmbed: "https://www.google.com/maps?q=33.69794,-7.36530&z=17&output=embed"
